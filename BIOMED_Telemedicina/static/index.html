@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b6b67">
+  <meta name="description" content="BIOMED, prototipo académico de telemedicina integral.">
+  <title>BIOMED | Telemedicina integral</title>
+  <link rel="stylesheet" href="/style.css?v=biomed-ui-terms-20261117">
+</head>
+<body>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <main id="authView" class="auth-layout">
+    <section class="auth-aside">
+      <div class="brand brand-light"><span class="brand-mark">+</span><span>BIOMED</span></div>
+      <div class="aside-copy">
+        <span class="eyebrow eyebrow-light">TELEMEDICINA INTEGRAL</span>
+        <h1>Atención conectada.<br><em>Seguimiento continuo.</em></h1>
+        <p>Un espacio digital para facilitar la comunicación entre profesionales de la salud y pacientes.</p>
+        <div class="aside-features">
+          <div><span class="feature-icon">◎</span><span>Consulta y seguimiento</span></div>
+          <div><span class="feature-icon">⌁</span><span>Expediente organizado</span></div>
+          <div><span class="feature-icon">↗</span><span>Rehabilitación supervisada</span></div>
+        </div>
+      </div>
+      <div class="aside-bottom">PROTOTIPO ACADÉMICO · VERSIÓN DE DEMOSTRACIÓN</div>
+    </section>
+
+    <section class="auth-main">
+      <div class="auth-card">
+        <div class="brand brand-mobile"><span class="brand-mark">+</span><span>BIOMED</span></div>
+        <div class="auth-heading">
+          <span class="eyebrow">BIENVENIDO A BIOMED</span>
+          <h2 id="authTitle">Tu salud, nuestra prioridad.</h2>
+          <p id="authSubtitle">Ingresa para continuar a tu espacio de atención.</p>
+        </div>
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab active" id="loginTab" type="button">Iniciar sesión</button>
+          <button class="auth-tab" id="registerTab" type="button">Crear cuenta</button>
+        </div>
+        <form id="loginForm" class="form-stack" method="post" action="/api/login">
+          <label>Correo electrónico<input name="email" type="email" autocomplete="username" placeholder="nombre@correo.com" required></label>
+          <label>Contraseña<input name="password" type="password" autocomplete="current-password" placeholder="Tu contraseña" required></label>
+          <button class="btn btn-primary btn-wide" type="submit">Ingresar <span>→</span></button>
+        </form>
+        <form id="registerForm" class="form-stack hidden">
+          <div class="form-grid">
+            <label class="span-2">Nombre completo<input name="name" type="text" placeholder="Nombre y apellidos" required maxlength="100"></label>
+            <label class="span-2">Correo electrónico<input name="email" type="email" placeholder="nombre@correo.com" required></label>
+            <label>Tipo de cuenta<select name="role" id="registerRole"><option value="paciente">Paciente</option><option value="medico">Médico</option></select></label>
+            <label>Contraseña<input name="password" type="password" minlength="8" placeholder="Mínimo 8 caracteres" required></label>
+            <label class="span-2 doctor-extra hidden">Especialidad<input name="specialty" type="text" placeholder="Ej. Medicina general"></label>
+            <label class="span-2 doctor-extra hidden">Cédula profesional (demostración)<input name="license" type="text" placeholder="Dato de ejemplo"></label>
+          </div>
+          <div class="privacy-note">
+            <strong>Antes de crear tu cuenta</strong>
+            <p>BIOMED es un prototipo académico local. Utiliza exclusivamente datos ficticios; no ingreses información clínica, fotografías ni datos personales reales.</p>
+            <label class="check-line"><input name="privacyAccepted" type="checkbox" required><span>He leído el aviso informativo de privacidad.</span></label>
+            <div class="check-line terms-check"><input name="termsAccepted" type="checkbox" required><span>Acepto los <button class="inline-link" id="openTerms" type="button">Términos y Condiciones</button> de la demostración.</span></div>
+          </div>
+          <button class="btn btn-primary btn-wide" type="submit">Crear cuenta <span>→</span></button>
+        </form>
+        <div class="demo-access">
+          <div class="demo-title"><span>ACCESO DE DEMOSTRACIÓN</span><span class="demo-dot"></span></div>
+          <div class="demo-buttons">
+            <button type="button" id="demoDoctor"><span class="demo-avatar">MT</span><span><b>Entrar como médico</b><small>medico@biomed.demo</small></span><i>↗</i></button>
+            <button type="button" id="demoPatient"><span class="demo-avatar patient-avatar">PA</span><span><b>Entrar como paciente</b><small>paciente@biomed.demo</small></span><i>↗</i></button>
+          </div>
+          <p>Contraseña para ambas cuentas: <b>Biomed123!</b></p>
+        </div>
+        <p class="auth-foot">BIOMED · Plataforma académica de telemedicina integral<br><button class="inline-link auth-terms-link" id="openTermsFooter" type="button">Consultar Términos y Condiciones</button></p>
+      </div>
+    </section>
+  </main>
+
+  <div id="appView" class="app-layout hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand"><div class="brand brand-light"><span class="brand-mark">+</span><span>BIOMED</span></div><span class="brand-caption">TELEMEDICINA INTEGRAL</span></div>
+      <div class="side-role"><span class="role-icon" id="roleIcon">M</span><span><b id="sideUserName">Usuario</b><small id="sideRole">Médico</small></span></div>
+      <nav id="mainNav" class="main-nav" aria-label="Navegación principal"></nav>
+      <div class="sidebar-bottom"><div class="support-card"><span class="support-symbol">✦</span><b>Espacio de atención</b><p>Información organizada para acompañar el seguimiento.</p></div><button id="logoutBtn" class="logout-btn">↪ <span>Cerrar sesión</span></button></div>
+    </aside>
+
+    <section class="main-area">
+      <header class="topbar">
+        <div class="topbar-left"><div><div class="breadcrumb">BIOMED <span>/</span> <b id="crumbCurrent">Resumen</b></div><h1 id="pageTitle">Resumen general</h1></div></div>
+        <div class="topbar-right"><div class="system-status"><span></span> Entorno de demostración</div><div class="top-avatar" id="topAvatar">U</div></div>
+      </header>
+      <main id="pageContent" class="page-content"></main>
+      <footer class="app-footer"><span>BIOMED · Prototipo académico</span><span>Los datos mostrados son ficticios y no constituyen una valoración médica.</span></footer>
+    </section>
+  </div>
+
+
+  <div class="legal-overlay hidden" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+    <section class="legal-dialog">
+      <header class="legal-header">
+        <div><span class="eyebrow">BIOMED · DOCUMENTO DE DEMOSTRACIÓN</span><h2 id="termsTitle">Términos y Condiciones</h2><p>Versión 1.0 · 17 de noviembre de 2026</p></div>
+        <button class="legal-close" id="closeTerms" type="button" aria-label="Cerrar términos">×</button>
+      </header>
+      <div class="legal-content">
+        <div class="legal-alert"><b>Importante:</b> este documento es un texto informativo para un prototipo académico. No constituye asesoría jurídica, contrato definitivo, aviso de privacidad legal ni acredita cumplimiento de normas sanitarias o de protección de datos. Debe revisarse y adaptarse por profesionales antes de cualquier uso real.</div>
+        <h3>1. Identificación y aceptación</h3><p>BIOMED (en adelante, “la Plataforma”) es una demostración académica de telemedicina integral. Al crear una cuenta, acceder o utilizar sus módulos, la persona usuaria declara que ha leído este documento y comprende el alcance limitado del entorno de prueba. La aceptación se solicita para documentar el uso de la demostración y no reemplaza los consentimientos que serían necesarios en un servicio profesional real.</p>
+        <h3>2. Finalidad académica y alcance</h3><p>La Plataforma tiene como finalidad mostrar, con fines educativos, una posible organización de perfiles de médico y paciente, agenda, información de ejemplo, mensajería, seguimiento y una interfaz de prueba de cámara. No es un establecimiento de salud, expediente clínico electrónico certificado, servicio de urgencias ni sistema habilitado para prestar atención médica.</p>
+        <h3>3. Ausencia de diagnóstico y tratamiento</h3><p>BIOMED no diagnostica enfermedades, no interpreta estudios, no indica medicamentos, no emite recetas y no sustituye la valoración de un profesional de la salud. Cualquier texto, cifra, gráfica, registro o contenido mostrado es demostrativo y no debe utilizarse para tomar decisiones clínicas. Ante una necesidad de atención, la persona debe acudir a los servicios y profesionales correspondientes.</p>
+        <h3>4. Datos ficticios y prohibición de información real</h3><p>La persona usuaria se compromete a utilizar exclusivamente nombres, correos, fotografías, antecedentes, medidas, mensajes y demás datos inventados para la demostración. No debe ingresar información de pacientes reales, datos de salud propios o de terceros, identificaciones oficiales, domicilios, teléfonos reales, imágenes clínicas ni documentos sensibles. La regla aplica también a la cámara, archivos y mensajería.</p>
+        <h3>5. Registro, cuentas y credenciales</h3><p>El registro permite crear perfiles de demostración con rol de médico o paciente. Los datos de acceso son de prueba y no verifican identidad, formación, cédula profesional ni relación médico-paciente. Cada persona debe evitar compartir sus credenciales y cerrar la sesión al terminar. Las cuentas de ejemplo pueden ser reiniciadas, modificadas o eliminadas como parte de las actividades académicas, sin garantía de conservación.</p>
+        <h3>6. Roles y permisos dentro de la demostración</h3><p>La interfaz separa algunas funciones según el rol seleccionado. Esta separación sirve para ilustrar flujos de trabajo, pero no debe interpretarse como un control de acceso de nivel clínico o empresarial. No se autoriza utilizar la Plataforma para gestionar pacientes, expedir indicaciones profesionales o delegar responsabilidades de atención.</p>
+        <h3>7. Expedientes, notas y seguimiento</h3><p>Los módulos de expediente, citas, notas, medicamentos, referencias y reportes contienen estructuras de demostración. Cualquier dato escrito debe ser ficticio. Las notas no constituyen documentación clínica válida y las gráficas no representan evidencia médica. El usuario que registra contenido es responsable de mantenerlo dentro del escenario académico y no atribuirle validez asistencial.</p>
+        <h3>8. Fisioterapia y rehabilitación</h3><p>El módulo musculoesquelético permite mostrar categorías de casos y registrar planes hipotéticos. BIOMED no prescribe ejercicios, cargas, repeticiones, progresiones ni tiempos de recuperación. Las decisiones de rehabilitación requieren evaluación individual y supervisión profesional fuera de esta aplicación. Los ejemplos no son instrucciones para tratar lesiones.</p>
+        <h3>9. Cámara, micrófono y teleconsulta</h3><p>La función de cámara solicita permisos del navegador para mostrar una vista previa en el mismo dispositivo. En esta versión no establece comunicación audiovisual remota con otra persona, no garantiza transmisión, confidencialidad ni continuidad, y no debe utilizarse para una consulta real. La persona usuaria puede detener la prueba y revocar permisos desde el navegador o el sistema operativo.</p>
+        <h3>10. Mensajería y comunicaciones</h3><p>La mensajería es una función básica de demostración y no un canal clínico seguro. No se deben compartir diagnósticos reales, resultados, datos de identificación, contraseñas ni información de emergencia. Los mensajes pueden permanecer en el archivo local de datos de ejemplo hasta que se reinicie o elimine el conjunto de demostración.</p>
+        <h3>11. Almacenamiento y limitaciones de seguridad</h3><p>La versión local almacena datos en archivos del proyecto, incluidos datos de demostración y credenciales de prueba. No ofrece garantías de cifrado, respaldo, disponibilidad, trazabilidad, protección frente a accesos no autorizados ni recuperación de información. No debe exponerse el servidor a Internet ni utilizarse en redes públicas con información sensible. La persona responsable del equipo debe proteger el directorio y eliminar los datos de prueba cuando termine la actividad.</p>
+        <h3>12. Uso permitido y conductas no permitidas</h3><p>Se permite explorar las funciones para aprendizaje, presentación y evaluación académica. No se permite usar la Plataforma para prestar servicios de salud, suplantar profesionales o pacientes, registrar información de terceros sin autorización, realizar actividades ilegales, interferir con el servidor, intentar acceder a datos ajenos o presentar los resultados como validación clínica, certificación o aprobación regulatoria.</p>
+        <h3>13. Disponibilidad, cambios y continuidad</h3><p>El proyecto puede modificarse, reiniciarse, quedar fuera de servicio o perder datos sin previo aviso. Las pantallas, funciones y contenidos pueden cambiar entre versiones. No se garantiza compatibilidad con todos los equipos, navegadores, cámaras o micrófonos, ni soporte técnico continuo.</p>
+        <h3>14. Propiedad intelectual y materiales</h3><p>Los elementos visuales, textos, nombres y componentes incluidos se presentan como parte del proyecto académico BIOMED o de sus respectivas licencias y atribuciones. La disponibilidad de la demostración no concede automáticamente derechos para copiar marcas, contenidos de terceros o materiales sujetos a licencia. Toda reutilización debe respetar los derechos aplicables y las condiciones de sus autores.</p>
+        <h3>15. Responsabilidad y uso bajo criterio propio</h3><p>La Plataforma se ofrece “tal como está” para demostración. Quienes la desarrollan o presentan no garantizan exactitud, seguridad, disponibilidad ni idoneidad para una finalidad clínica. En la medida permitida por la legislación aplicable, no debe atribuirse a la demostración responsabilidad por decisiones tomadas a partir de datos ficticios, interrupciones, pérdida de información o uso contrario a estas condiciones. Esta cláusula no pretende excluir derechos irrenunciables reconocidos por la ley.</p>
+        <h3>16. Privacidad y documento independiente</h3><p>Este texto no es un aviso de privacidad. Una versión destinada a usuarios reales requeriría identificar al responsable del tratamiento, finalidades, datos recabados, bases de legitimación, transferencias, plazos de conservación, mecanismos para ejercer derechos y medios de contacto, entre otros elementos que correspondan. No se deben usar datos personales reales en este prototipo.</p>
+        <h3>17. Modificaciones y contacto</h3><p>Las condiciones podrán actualizarse durante el desarrollo académico. La versión vigente deberá mostrarse en la Plataforma. Esta demostración no dispone de un canal formal de soporte al usuario; cualquier comunicación sobre el proyecto debe realizarse por los medios académicos establecidos por sus responsables, fuera de la aplicación.</p>
+        <h3>18. Legislación y revisión</h3><p>El texto deberá revisarse conforme a la legislación aplicable al lugar y al contexto donde se pretenda utilizar la Plataforma. No se fija aquí una jurisdicción definitiva ni se afirma que estas condiciones cumplan requisitos legales específicos. Antes de un despliegue público o clínico es indispensable una revisión jurídica, técnica, de privacidad y de seguridad.</p>
+        <div class="legal-alert legal-end"><b>Resumen de uso:</b> BIOMED es una demostración local y académica. Utiliza datos completamente ficticios. No la utilices para atención médica real.</div>
+      </div>
+      <footer class="legal-footer"><span>BIOMED · Prototipo académico · Versión 1.0</span><button class="btn btn-primary" id="closeTermsBottom" type="button">Entendido</button></footer>
+    </section>
+  </div>
+
+  <script src="/app.js?v=biomed-ui-terms-20261117"></script>
+</body>
+</html>

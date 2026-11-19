@@ -1,0 +1,164 @@
+{
+  "users": [
+    {
+      "id": "demo-paciente",
+      "name": "Alex Rivera (Demo)",
+      "email": "paciente@biomed.demo",
+      "password": "Biomed123!",
+      "role": "paciente",
+      "created": "2026-11-18T00:03",
+      "privacyAccepted": true
+    },
+    {
+      "id": "demo-medico",
+      "name": "Dra. Ana Torres (Demo)",
+      "email": "medico@biomed.demo",
+      "password": "Biomed123!",
+      "role": "medico",
+      "specialty": "Medicina familiar",
+      "license": "DEMO-0000",
+      "created": "2026-11-18T00:03",
+      "privacyAccepted": true
+    }
+  ],
+  "patients": [
+    {
+      "userId": "demo-paciente",
+      "name": "Alex Rivera (Demo)",
+      "birthDate": "1985-04-12",
+      "sex": "",
+      "phone": "000-000-0000",
+      "heightCm": "172",
+      "weightKg": "74",
+      "bloodType": "O+",
+      "curp": "DATO-FICTICIO",
+      "address": "Domicilio de demostraciónewf",
+      "allergies": "Ninguna registrada (dato ficticio)",
+      "emergencyContact": "Contacto ficticio",
+      "conditions": [
+        "Hipertensión (ejemplo académico)"
+      ],
+      "notes": "Expediente completamente ficticio para demostración."
+    }
+  ],
+  "appointments": [
+    {
+      "id": "cita-1",
+      "patientId": "demo-paciente",
+      "doctorId": "demo-medico",
+      "date": "2026-11-21",
+      "time": "10:00",
+      "type": "Seguimiento general",
+      "status": "Confirmada",
+      "notes": "Cita de demostración."
+    },
+    {
+      "id": "cita-2",
+      "patientId": "demo-paciente",
+      "doctorId": "demo-medico",
+      "date": "2026-11-28",
+      "time": "12:30",
+      "type": "Revisión de seguimiento",
+      "status": "Pendiente",
+      "notes": "Cita de demostración."
+    },
+    {
+      "id": "cita-c5d074291bfc",
+      "patientId": "demo-paciente",
+      "doctorId": "demo-medico",
+      "date": "2026-11-26",
+      "time": "18:19",
+      "type": "Valoración de rehabilitación",
+      "status": "Pendiente",
+      "notes": ""
+    }
+  ],
+  "records": [
+    {
+      "id": "rec-1",
+      "patientId": "demo-paciente",
+      "doctorId": "demo-medico",
+      "date": "2026-11-18",
+      "diagnosis": "Registro académico de ejemplo",
+      "note": "Nota ficticia. No constituye valoración médica."
+    },
+    {
+      "id": "rec-e8a1c4ca1847",
+      "patientId": "demo-paciente",
+      "doctorId": "demo-medico",
+      "date": "2026-11-18",
+      "diagnosis": "tienes cancer andi ",
+      "note": "valorar cancer"
+    }
+  ],
+  "medications": [
+    {
+      "id": "med-1",
+      "patientId": "demo-paciente",
+      "doctorId": "demo-medico",
+      "name": "Medicamento de ejemplo",
+      "dose": "Según indicación ficticia",
+      "frequency": "Dato demostrativo",
+      "startDate": "2026-11-18",
+      "endDate": "",
+      "status": "Activo"
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg-1",
+      "patientId": "demo-paciente",
+      "senderId": "demo-medico",
+      "senderName": "Dra. Ana Torres (Demo)",
+      "text": "Hola. Este es el chat de demostración de BIOMED.",
+      "time": "2026-11-18T00:03"
+    },
+    {
+      "id": "msg-6c444350060a",
+      "patientId": "demo-paciente",
+      "senderId": "demo-paciente",
+      "senderName": "Alex Rivera (Demo)",
+      "text": "hola",
+      "time": "2026-11-17T18:18"
+    },
+    {
+      "id": "msg-18c958f534b6",
+      "patientId": "demo-paciente",
+      "senderId": "demo-medico",
+      "senderName": "Dra. Ana Torres (Demo)",
+      "text": "ola",
+      "time": "2026-11-17T18:21"
+    }
+  ],
+  "referrals": [
+    {
+      "id": "ref-1",
+      "patientId": "demo-paciente",
+      "specialty": "Cardiología (ejemplo)",
+      "reason": "Referencia simulada",
+      "date": "2026-11-18",
+      "status": "En espera"
+    }
+  ],
+  "rehabPlans": [
+    {
+      "id": "rehab-9e894a37c724",
+      "patientId": "demo-paciente",
+      "doctorId": "demo-medico",
+      "caseType": "Lesión de tobillo",
+      "title": "rehabbilitacion",
+      "objective": "caminar",
+      "professionalNotes": "",
+      "startDate": "2026-11-18",
+      "reviewDate": "",
+      "status": "Activo",
+      "created": "2026-11-17T18:21"
+    }
+  ],
+  "metrics": {
+    "consultations": 12,
+    "activePatients": 8,
+    "pendingAppointments": 3,
+    "referrals": 2
+  }
+}
